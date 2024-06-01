@@ -1,0 +1,102 @@
+SQL Queries Overview:
+  
+Q1. Average Daily Trading Volume:
+  
+SELECT
+    stock_symbol,
+    AVG(daily_trading_volume) AS avg_daily_trading_volume
+FROM
+    trading_data
+GROUP BY
+    stock_symbol
+ORDER BY
+    avg_daily_trading_volume DESC;
+
+Q2. Most Volatile Stocks:
+
+SELECT
+    stock_symbol,
+    beta
+FROM
+    stock_data
+ORDER BY
+    beta DESC
+LIMIT 10;
+
+Q3. Stocks with Highest and Lowest Dividends:
+
+SELECT
+    stock_symbol,
+    dividend
+FROM
+    stock_data
+ORDER BY
+    dividend DESC
+LIMIT 10;
+
+SELECT  stock_symbol,
+    dividend
+FROM
+    stock_data
+ORDER BY
+    dividend ASC
+LIMIT 10;
+
+Q4. Highest and Lowest P/E Ratios:
+
+SELECT
+    stock_symbol,
+    pe_ratio
+FROM
+    stock_data
+ORDER BY
+    pe_ratio DESC
+LIMIT 10;
+
+SELECT
+    stock_symbol,
+    pe_ratio
+FROM
+    stock_data
+ORDER BY
+    pe_ratio ASC
+LIMIT 10;
+
+Q5. Stocks with Highest Market Cap:
+
+SELECT
+    stock_symbol,
+    market_cap
+FROM
+    stock_data
+ORDER BY
+    market_cap DESC
+LIMIT 10;
+
+Q6. Stocks with Strong Buy and Sell Signals:
+
+-- Strong Buy Signal (MACD > 0 and RSI < 30)
+  
+SELECT
+    stock_symbol,
+    macd,
+    rsi
+FROM
+    technical_indicators
+WHERE
+    macd > 0 AND rsi < 30
+ORDER BY
+    macd DESC, rsi ASC
+LIMIT 10;
+
+-- Strong Sell Signal (RSI > 80)
+
+SELECT
+    stock_symbol,
+    rsi
+FROM
+    technical_indicators
+WHERE
+    rsi > 80
+ORDER BY
+    rsi DES;
